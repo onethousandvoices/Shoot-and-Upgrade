@@ -1,3 +1,4 @@
-namespace Views;
-
-public sealed class MainCameraView : MonoBehaviour { }
+namespace Views
+{
+    public sealed class MainCameraView : MonoBehaviour { }
+}

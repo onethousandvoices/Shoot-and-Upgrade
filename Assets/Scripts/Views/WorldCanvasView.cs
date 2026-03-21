@@ -1,3 +1,4 @@
-namespace Views;
-
-public sealed class WorldCanvasView : MonoBehaviour { }
+namespace Views
+{
+    public sealed class WorldCanvasView : MonoBehaviour { }
+}

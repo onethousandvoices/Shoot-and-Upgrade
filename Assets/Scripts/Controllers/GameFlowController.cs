@@ -42,20 +42,20 @@ public sealed class GameFlowController : IGameFlow, IStartable, IDisposable
 
     public void Start()
     {
-        var canvasTransform = _canvasView.Canvas.transform;
-        _mainMenu = Object.Instantiate(ResourcesLoader.GetMainMenu(), canvasTransform);
-        _pauseMenu = Object.Instantiate(ResourcesLoader.GetPauseMenu(), canvasTransform);
-        _lostMenu = Object.Instantiate(ResourcesLoader.GetLostMenu(), canvasTransform);
-        
+        var safeArea = _canvasView.SafeArea;
+        _mainMenu = Object.Instantiate(ResourcesLoader.GetMainMenu(), safeArea);
+        _pauseMenu = Object.Instantiate(ResourcesLoader.GetPauseMenu(), safeArea);
+        _lostMenu = Object.Instantiate(ResourcesLoader.GetLostMenu(), safeArea);
+
         _mainMenu.PlayButton.onClick.AddListener(Play);
         _mainMenu.UpgradeButton.onClick.AddListener(OpenUpgrades);
         _mainMenu.ExitButton.onClick.AddListener(Exit);
-        
+
         _pauseMenu.ReturnToMainMenuButton.onClick.AddListener(ReturnToMainMenu);
         _pauseMenu.UpgradeButton.onClick.AddListener(OpenUpgrades);
         _pauseMenu.CloseButton.onClick.AddListener(Resume);
-        
-        _pauseButton = Object.Instantiate(ResourcesLoader.GetPauseButton(), canvasTransform);
+
+        _pauseButton = Object.Instantiate(ResourcesLoader.GetPauseButton(), safeArea);
         _pauseButton.PauseButton.onClick.AddListener(OnPausePressed);
         
         _lostMenu.ReturnToMainMenuButton.onClick.AddListener(ReturnToMainMenuFromLost);

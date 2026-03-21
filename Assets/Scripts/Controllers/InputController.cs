@@ -38,9 +38,10 @@ public sealed class InputController : IInput, IStartable, ITickable, IDisposable
         _shootAction = _actions.Main.Shoot;
         _actions.Main.Pause.performed += OnPausePerformed;
         _actions.Main.Enable();
-        
-        if (IsMobile())
-            CreateMobileControls();
+
+#if UNITY_ANDROID || UNITY_IOS
+        CreateMobileControls();
+#endif
     }
 
     public void Tick()
@@ -63,20 +64,16 @@ public sealed class InputController : IInput, IStartable, ITickable, IDisposable
 
     private void OnPausePerformed(InputAction.CallbackContext ctx) => PausePressed?.Invoke();
 
-    private static bool IsMobile() =>
-        Application.platform == RuntimePlatform.Android ||
-        Application.platform == RuntimePlatform.IPhonePlayer;
-    
     private void CreateMobileControls()
     {
-        var canvasTransform = _canvasView.Canvas.transform;
-        var canvasRect = ((RectTransform)canvasTransform).rect;
+        var safeArea = _canvasView.SafeArea;
+        var canvasRect = safeArea.rect;
         var halfWidth = canvasRect.width * 0.5f;
         var bottomY = -canvasRect.height * 0.5f + 200f;
-        
-        _mobileControls.Add(CreateStick(canvasTransform, "<Gamepad>/leftStick", new(-halfWidth + 200f, bottomY)));
-        _mobileControls.Add(CreateStick(canvasTransform, "<Gamepad>/rightStick", new(halfWidth - 200f, bottomY)));
-        _mobileControls.Add(CreateShootButton(canvasTransform, new(halfWidth - 200f, bottomY + 250f)));
+
+        _mobileControls.Add(CreateStick(safeArea, "<Gamepad>/leftStick", new(-halfWidth + 200f, bottomY)));
+        _mobileControls.Add(CreateStick(safeArea, "<Gamepad>/rightStick", new(halfWidth - 200f, bottomY)));
+        _mobileControls.Add(CreateShootButton(safeArea, new(halfWidth - 200f, bottomY + 250f)));
     }
 
     private static GameObject CreateStick(Transform parent, string controlPath, Vector2 position)
@@ -100,7 +97,7 @@ public sealed class InputController : IInput, IStartable, ITickable, IDisposable
         
         var stick = handleGo.AddComponent<OnScreenStick>();
         stick.controlPath = controlPath;
-        stick.movementRange = 60f;
+        stick.movementRange = 20f;
         
         return stickGo;
     }

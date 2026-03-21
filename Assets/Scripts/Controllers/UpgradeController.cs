@@ -20,7 +20,7 @@ public sealed class UpgradeController : IStartable, IDisposable
     public void Start()
     {
         var prefab = ResourcesLoader.GetUpgradeWindow();
-        _windowView = Object.Instantiate(prefab, _canvasView.Canvas.transform);
+        _windowView = Object.Instantiate(prefab, _canvasView.SafeArea);
         
         _pending = new int[_types.Length];
         _rows = new StatRowView[_types.Length];

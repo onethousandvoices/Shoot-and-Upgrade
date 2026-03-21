@@ -55,7 +55,7 @@ public sealed class PlayerController : IPlayerView, IPlayerKillReward, ITickable
         _view.Transform.localScale = Vector3.zero;
         _view.CharacterController.enabled = false;
         
-        _hpBar = Object.Instantiate(ResourcesLoader.GetHpBar(), _canvasView.Canvas.transform);
+        _hpBar = Object.Instantiate(ResourcesLoader.GetHpBar(), _canvasView.SafeArea);
         
         _projectiles.RegisterPool(Team.Player, ResourcesLoader.GetPlayerProjectile(), PROJECTILE_PREWARM);
         

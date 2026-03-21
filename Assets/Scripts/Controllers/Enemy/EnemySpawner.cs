@@ -8,7 +8,7 @@ public readonly record struct RadiusRange(float Min, float Max, float MinSqr, fl
 public sealed class EnemySpawner
 {
     private const float SPAWN_HEIGHT = 1f;
-    private const float EXCLUSION_RADIUS = 20f;
+    private const float EXCLUSION_RADIUS = 10f;
     
     private readonly EnemyConfig _config;
     private readonly PlayerConfig _playerConfig;

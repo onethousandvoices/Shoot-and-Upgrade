@@ -1,8 +1,11 @@
-namespace Views.UI;
-
-public sealed class MainCanvasView : MonoBehaviour
+namespace Views.UI
 {
-    [SerializeField] private Canvas _canvas;
+    public sealed class MainCanvasView : MonoBehaviour
+    {
+        [SerializeField] private Canvas _canvas;
+        [SerializeField] private RectTransform _safeArea;
 
-    public Canvas Canvas => _canvas;
+        public Canvas Canvas => _canvas;
+        public RectTransform SafeArea => _safeArea;
+    }
 }
