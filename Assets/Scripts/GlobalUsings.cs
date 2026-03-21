@@ -1,0 +1,12 @@
+global using System;
+global using System.Collections.Generic;
+global using UnityEngine;
+global using UnityEngine.UI;
+global using DG.Tweening;
+global using VContainer;
+global using VContainer.Unity;
+global using Data;
+global using Utilities;
+global using Views;
+global using Views.UI;
+global using Object = UnityEngine.Object;

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d11f6ead79dec4f90af5a2c119bf7d, type: 3}
+  m_Name: CameraConfig
+  m_EditorClassIdentifier: 
+  _menuHeight: 40
+  _menuLookAngle: 90
+  _menuDriftSpeed: 8
+  _menuDriftMargin: 0.4
+  _shakeDuration: 0.1
+  _shakeStrength: 0.05
+  _flyInDuration: 1.5
+  _flyOutDuration: 1.5
+  _flyOutHeight: 40
+  _spawnViewHeight: 5
+  _spawnViewOffset: 10
+  _trackingSmoothing: 3
+  _attachSmoothing: 30
